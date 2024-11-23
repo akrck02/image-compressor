@@ -1,4 +1,4 @@
-github.com/h2non/bimg v1.1.9 h1:WH20Nxko9l/HFm4kZCA3Phbgu2cbHvYzxwxn9YROEGg=
-github.com/h2non/bimg v1.1.9/go.mod h1:R3+UiYwkK4rQl6KVFTOFJHitgLbZXBZNFh2cv3AEbp8=
+github.com/rwxrob/bonzai v0.53.0 h1:JMbyAunbBh6PFmDlwLCdWIaEcjKW5P60GfAUKbctbyY=
+github.com/rwxrob/bonzai v0.53.0/go.mod h1:217QTdfv41+Dji8cAeko6oXcaPR9I31xvbOP9ksNx5U=
 golang.org/x/image v0.22.0 h1:UtK5yLUzilVrkjMAZAZ34DXGpASN8i8pj8g+O+yd10g=
 golang.org/x/image v0.22.0/go.mod h1:9hPFhljd4zZ1GNSIZJ49sqbp45GKK9t6w+iXvGqZUz4=
