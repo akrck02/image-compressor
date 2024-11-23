@@ -20,10 +20,6 @@ const MIME_TYPES_PNG string = "image/png"
 const THUMBNAIL_DEFAULT_WIDTH int = 300
 const THUMBNAIL_DEFAULT_SUFFIX string = "min"
 
-func main() {
-	Thumbnail("resources", "thumbnails", THUMBNAIL_DEFAULT_WIDTH, THUMBNAIL_DEFAULT_SUFFIX)
-}
-
 // Thumbnail the images in the given path to the specified width and suffix
 func Thumbnail(path string, creationPath string, width int, suffix string) {
 
@@ -122,7 +118,11 @@ func thumbnailFile(path string, creationPath string, width int, suffix string) {
 	}
 
 	// Create the output file
-	var thumbnailPath string = strings.TrimSuffix(creationPath, extension) + "-" + suffix + extension
+	var thumbnailPath string = creationPath
+	if suffix != "" {
+		thumbnailPath = strings.TrimSuffix(creationPath, extension) + "-" + suffix + extension
+	}
+
 	output, err := os.Create(thumbnailPath)
 	panicIfNeeded(err)
 
@@ -167,9 +167,17 @@ func generateThumbnail(r io.Reader, w io.Writer, mimetype string, width int) err
 	dst := image.NewRGBA(image.Rect(0, 0, width, height))
 	draw.NearestNeighbor.Scale(dst, dst.Rect, src, src.Bounds(), draw.Over, nil)
 
-	err = jpeg.Encode(w, dst, nil)
-	if err != nil {
-		return err
+	switch mimetype {
+	case MIME_TYPES_JPEG:
+		err = jpeg.Encode(w, dst, nil)
+		if err != nil {
+			return err
+		}
+	case MIME_TYPES_PNG:
+		err = png.Encode(w, dst)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil

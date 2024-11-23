@@ -27,7 +27,7 @@ func main() {
 		width = w
 	}
 
-	suffix := "min"
+	suffix := ""
 	if len(args) > 4 {
 		suffix = args[3]
 	}
